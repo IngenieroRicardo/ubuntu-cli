@@ -2,7 +2,7 @@
 
 ### Ejecutar con Docker compose:
 ```bash
-sudo docker-compose up
+sudo docker-compose up -d
 ```
 
 ### Compilar y Ejecutar Imagen Docker:
