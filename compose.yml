@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  ubuntu-cli:
+    image: ubuntu:24.04
+    container_name: ubuntu-cli
+    environment:
+      ttyd_user: "Admin"
+      ttyd_password: "123456"
+      DEBIAN_FRONTEND: "noninteractive"
+    entrypoint: ["/bin/bash","-c"]
+    command: 
+      - |
+        apt-get update
+        apt-get install -y ttyd
+        /usr/bin/ttyd -c "$${ttyd_user}":"$${ttyd_password}" -p 7681 -W /usr/bin/bash
+    ports:
+      - "8006:7681"
+
+#sudo docker-compose -up
