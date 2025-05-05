@@ -1,5 +1,4 @@
-# ubuntu-cli
-localhost:8006
+# ubuntu-cli: http://localhost:8006
 
 ### Ejecutar con Docker compose:
 ```bash
