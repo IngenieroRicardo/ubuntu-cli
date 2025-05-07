@@ -11,10 +11,12 @@ services:
     entrypoint: ["/bin/bash","-c"]
     command: 
       - |
-        apt-get update
-        apt-get install -y wget
-        wget https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.i686
-        chmod a+x ttyd.i686
+        if ! [ -f /ttyd.i686 ]; then \
+           apt-get update; \
+           apt-get install -y wget; \
+           wget https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.i686; \
+           chmod a+x ttyd.i686; \
+        fi
         ./ttyd.i686 -c "$${ttyd_user}":"$${ttyd_password}" -p 7681 -W /usr/bin/bash
     ports:
       - "8006:7681"
