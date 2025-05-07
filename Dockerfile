@@ -5,10 +5,12 @@ ENV ttyd_password="123456"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update
-RUN apt-get install -y wget
-RUN wget https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.i686
-RUN chmod a+x ttyd.i686
+RUN if ! [ -f /ttyd.i686 ]; then \
+       apt-get update; \
+       apt-get install -y wget; \
+       wget https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.i686; \
+       chmod a+x ttyd.i686; \
+    fi
 
 EXPOSE 7681
 
